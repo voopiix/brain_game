@@ -10,7 +10,11 @@ let timerId = null;
 let timerstarted = false;
 
 
-
+function formatTime(seconds){
+    const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+    const s = String(seconds % 60).padStart(2, '0');
+    return `$(m):$(s)`;
+}
 
 
 
@@ -20,4 +24,4 @@ let atvertilaukumi = [];
 let pedejieDivi = [];
 
 //sajauc emoji nejaušā seciba
-let laukumiSajaukti = [...laukumiSaturs].sort(() => Math.random() )
+let laukumiSajaukti = [...laukumiSaturs].sort(() => Math.random() - 0.5);
