@@ -7,6 +7,6 @@ function saktSpeli()
     }
     else
     {
-        window.location = 'spele#' + ievaditsVards
+        window.location = '/spele#' + ievaditsVards
     }
 }
