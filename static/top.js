@@ -1,5 +1,5 @@
 //top lapas veidošana
-//parādis TOP-5
+//parādīs TOP-5
 //ja URL hash piedāvā vārdu, klikšķus, laiku -> lapā parādīs iespēju pievienoties
 function formatTime(seconds) {
     seconds = Number(seconds) || 0;
@@ -13,12 +13,12 @@ function parseHash() {
     if (!raw) return null;
     const parts = decodeURI(raw).split(',');
     const vards = (parts[0] || '').trim();
-    const kliksi = Number(parts[1]);
+    const klikski = Number(parts[1]);
     const laiks = Number(parts[2]);
 
     if (!vards || Number.isNaN(klikski) || Number.isNaN(laiks))
         return null;
-    return {vards, kliksi, laiks}
+    return {vards, klikski, laiks}
 }
 
 async function iegutDatusNoApi(url) {
@@ -29,27 +29,27 @@ async function iegutDatusNoApi(url) {
     return await response.json();
 }
 
-function iztiritTabulu(){
+function iztiritTabulu() {
     const tabula = document.querySelector('.tops');
-    //astāj tikai virsraskta rindu
+    //atstāj tikai virsraksta rindu
     tabula.innerHTML = `
-    <tr>
-        <td>Spēlētājs</td>
-        <td>Klikšķi</td>
-        <td>laiks</td>
-        <td>Datums</td>
-     </tr>`;
+        <tr>
+            <td>Spēlētājs</td>
+            <td>Klikšķi</td>
+            <td>Laiks</td>
+            <td>Datums</td>
+        </tr>`;
 }
 
-function aizpildiTabulu(ieraksti){
-    const tabula = document.querySelector(`.tops`);
+function aizpilditTabulu(ieraksti) {
+    const tabula = document.querySelector('.tops');
     ieraksti.forEach(ieraksts => {
         tabula.innerHTML += `
             <tr>
-            <td>${ieraksts.vards}</td>
-            <td>${ieraksts.klikski}</td>
-            <td>${formatTime(ieraksts.laiks)}</td>
-            <td>${ieraksts.datums}</td>
-        </tr>`;
+                <td>${ieraksts.vards}</td>
+                <td>${ieraksts.klikski}</td>
+                <td>${formatTime(ieraksts.laiks)}</td>
+                <td>${ieraksts.datums}</td>
+            </tr>`;
     });
 }
